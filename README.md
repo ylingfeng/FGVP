@@ -7,7 +7,7 @@ Official Codes for [Fine-Grained Visual Prompting](https://arxiv.org/abs/2306.04
 
 ### Install
 **Acknowledgement**:
-[ReClip](https://github.com/allenai/reclip): The code-base we built upon. The install instruction for this repository and the prepareation of datasets are borrowed directly from [here](fgvp-reclip/README.md).
+[ReClip](https://arxiv.org/abs/2204.05991): The architecture we built upon, the installation instructions for this repository, and the preparation of datasets can be found in the [ReClip repository](https://github.com/allenai/reclip).
 
 
 ### FGVP
