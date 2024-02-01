@@ -33,3 +33,32 @@ A Summary of visual prompts with the caption "elephant on the left".
 | RedCircle                     | ViT-L/14@336px, RN50x16 | $P{\  \| \ }C1{\  \| \ }C3{\  \| \ }C4$ |       RS        |    [link](https://github.com/ylingfeng/FGVP/blob/main/fgvp-reclip/cmds/ViT-L-14%40336px%2CRN50x16/run_RS_red_circle_ensemble.py)     |    56.8     |     58.6     |     62.2     |
 | FGVP (ours)                   | ViT-L/14@336px, RN50x16 | $P{\  \| \ }D1{\  \| \ }D3{\  \| \ }D4$ |       RS        | [link](https://github.com/ylingfeng/FGVP/blob/main/fgvp-reclip/cmds/ViT-L-14%40336px%2CRN50x16/run_RS_blur_reverse_mask_ensemble.py) |  **59.6**   |   **60.0**   |   **63.3**   |
 
+### Inference Single Image
+We simply offer an inference script for a single image without post-processing.
+
+```python
+# example 1
+python fgvp-reclip/simple_inference.py \
+    --img_dir demo/exp1/ori.png \
+    --text 'apple on the left' 'apple in the middle' 'broccoli' 'raspberries' 'grossum' 'glass bowl' \
+    --out_dir demo/exp1 \
+    --sam_prompt grid
+
+# example 2
+python fgvp-reclip/simple_inference.py \
+    --img_dir demo/exp2/ori.png \
+    --out_dir demo/exp2 \
+    --text 'photo on the wall' \
+    --sam_prompt grid
+```
+
+You can provide proposal boxes derived from other detectors to achieve better localization. Save your bounding boxes in a JSON file and specify it with `--candidate_boxes`.
+```python
+# example
+python fgvp-reclip/simple_inference.py \
+    --img_dir demo/exp1/ori.png \
+    --text 'apple on the left' 'apple in the middle' 'broccoli' 'raspberries' 'grossum' 'glass bowl' \
+    --out_dir demo/exp1 \
+    --sam_prompt box \
+    --candidate_boxes demo/exp1/candidate_boxes.json
+```
