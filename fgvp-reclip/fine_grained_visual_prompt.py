@@ -42,6 +42,10 @@ class FGVP_ENSEMBLE:
         self.device = device
 
     def __call__(self, visual_prompt: str, image, centers, boxes, masks):
+        # image    np.array(H, W, 3) uint8, rgb[0~255]
+        # centers  torch.Tensor(N, 2) float
+        # boxes    torch.Tensor(N, 4) float
+        # masks    torch.Tensor(N, 1, H, W) bool, 
         assert len(centers) == len(boxes) == len(masks)
         if 'crop' == visual_prompt or 'cpt' == visual_prompt or 'cpt_seg' == visual_prompt or 'ov_seg' == visual_prompt or 'blur_seg' == visual_prompt:
             clip_inputs = []
